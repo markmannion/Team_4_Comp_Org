@@ -9,8 +9,11 @@ import java.util.List;
 public class BatteryInfo {
     public void getBatteryInfo(HardwareAbstractionLayer hal){
        List<PowerSource> sourceList = hal.getPowerSources();
+       int counter = 1;
        for(PowerSource source:sourceList){
            if (StringUtils.contains(source.getName(), "Battery")) {
+               System.out.println("~~~~ BATTERY "+counter+" ~~~~");
+               counter++;
                String name = source.getName(); //name of power source at OS level
                double voltage = source.getVoltage(); //voltage of battery in volts
                int maxCapacity = source.getMaxCapacity(); //current maximum capacity of battery in
@@ -23,6 +26,7 @@ public class BatteryInfo {
                System.out.println("Default Capacity: " + originalCapacity + " mAh");
                System.out.println("Capacity lost through usage: "+calculateCapacityLost(maxCapacity, originalCapacity)+"%");
                System.out.println("Current Battery Temperature: " + temperature + "°C");
+               System.out.println(" ");
            }
        }
     }
