@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import oshi.SystemInfo;
 import oshi.hardware.HardwareAbstractionLayer;
@@ -18,22 +19,29 @@ public class UsbInfo {
         UsbInfo usb = new UsbInfo(hal);
         usb.getInfo();
 
+
     }
 
     UsbInfo(HardwareAbstractionLayer hal) {
         devices = hal.getUsbDevices(true);
     }
 
+    
     public void getInfo(){
-        System.out.println(devices.toString());
-        
-        for (UsbDevice usb: this.devices){
-            List<UsbDevice> subDevices = usb.getConnectedDevices();
-            // System.out.println(usb);
-            for (UsbDevice subdev: subDevices){
-                // System.out.println("\t"+usb.());
+        getInfo(this.devices,0);
+    }
+
+    public void getInfo(List<UsbDevice>devices, int currDepth){
+        for (UsbDevice usb: devices){
+            System.out.println("\t".repeat(currDepth)+usb.getName()+ " vendor - "+ usb.getVendor() + "(" +usb.getVendorId()+")");
+            if (!usb.getConnectedDevices().isEmpty()){
+                getInfo(usb.getConnectedDevices(),currDepth+1);
             }
+
         }
+
+
+        
 
         
 
