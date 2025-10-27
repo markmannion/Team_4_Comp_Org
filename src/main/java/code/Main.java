@@ -9,5 +9,7 @@ Main {
         SystemManager manager = new SystemManager();
         CpuInfo cpuInfo = new CpuInfo(manager.getHal());
 
+        GraphicsCardInfo gpuInfo = new GraphicsCardInfo(manager.getHal());
+        gpuInfo.printOutGpuInfo();
     }
 }

@@ -1,19 +1,16 @@
 package code;
-import oshi.SystemInfo;
 import oshi.hardware.GraphicsCard;
 import oshi.hardware.HardwareAbstractionLayer;
 import java.util.List;
 
 
-public class graphicsCard {
-    public static void main(String[] args){
-
-        SystemInfo systemInfo = new SystemInfo();
-        HardwareAbstractionLayer hardware = systemInfo.getHardware();
-        gpuInfo(hardware);
+public class GraphicsCardInfo {
+    private final HardwareAbstractionLayer hardware;
+    public GraphicsCardInfo(HardwareAbstractionLayer hardware){
+        this.hardware = hardware;
     }
 
-    public static void gpuInfo(HardwareAbstractionLayer hardware){
+    public void printOutGpuInfo(){
         System.out.println();
         System.out.println("GPU Info");
         System.out.println();
