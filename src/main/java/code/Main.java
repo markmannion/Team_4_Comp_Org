@@ -11,5 +11,11 @@ Main {
 
         GraphicsCardInfo gpuInfo = new GraphicsCardInfo(manager.getHal());
         gpuInfo.printOutGpuInfo();
+
+        DisplayInfo displayInfo = new DisplayInfo(manager.getHal());
+        displayInfo.printOutDisplayInfo();
+
+        BaseBoardInfo motherboardInfo = new BaseBoardInfo(manager.getHal());
+        motherboardInfo.printOutBaseBoardInfo();
     }
 }

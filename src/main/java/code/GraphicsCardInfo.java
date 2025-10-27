@@ -13,7 +13,7 @@ public class GraphicsCardInfo {
     public void printOutGpuInfo(){
         System.out.println();
         System.out.println("GPU Info");
-        System.out.println();
+        System.out.println("--------");
 
         List<GraphicsCard> gpus = hardware.getGraphicsCards();
 
@@ -23,7 +23,6 @@ public class GraphicsCardInfo {
             int count = 1;
             for(GraphicsCard gpu : gpus){
                 System.out.println("GPU No: " + count);
-                System.out.println();
                 System.out.println("GPU Name: " + gpu.getName());
                 System.out.println("GPU Vendor: " + gpu.getVendor());
                 System.out.printf("VRAM Total: %f GB \n", ((float)gpu.getVRam()/1024f/1024f/1024f)); //fix issue with VRAM displaying in bytes instead of GB
