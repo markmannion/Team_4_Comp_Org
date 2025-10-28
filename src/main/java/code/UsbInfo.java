@@ -13,18 +13,10 @@ import oshi.hardware.UsbDevice;
 public class UsbInfo {
     private final HardwareAbstractionLayer hardware;
 
-
-    public static void main(String[] args) {
-        SystemInfo si = new SystemInfo();
-        HardwareAbstractionLayer hal = si.getHardware();
-        UsbInfo usb = new UsbInfo(hal);
-        usb.getInfo();
-    }
-
     UsbInfo(HardwareAbstractionLayer hardware) {
         this.hardware = hardware;
-    }
 
+    }
     
     public void getInfo(){
         List<UsbDevice> devices = this.hardware.getUsbDevices(true);

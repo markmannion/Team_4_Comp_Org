@@ -18,9 +18,4 @@ public class PciInfo {
         }
     }
 
-
-    public static void main(String[] args) throws IOException {
-        getInfo();
-
-    }
 }
