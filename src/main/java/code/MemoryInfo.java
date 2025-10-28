@@ -33,11 +33,16 @@ public class MemoryInfo {
     }
 
     public void getMemoryInfo(){
-        System.out.println("Manufacturer: "+ physicalMemoryList.get(0).getManufacturer());
-        System.out.println("Capacity: "+ getTotalMemoryGB() );
-        System.out.println("Clock Speed: " + physicalMemoryList.get(0).getClockSpeed()/1000000);
-        System.out.println("Part Number: "+ physicalMemoryList.get(0).getPartNumber());
-        System.out.println("Page size" + memory.getPageSize());
+        try{System.out.println("Manufacturer: "+ physicalMemoryList.get(0).getManufacturer());
+            System.out.println("Capacity: "+ getTotalMemoryGB() );
+            System.out.println("Clock Speed: " + physicalMemoryList.get(0).getClockSpeed()/1000000);
+            System.out.println("Part Number: "+ physicalMemoryList.get(0).getPartNumber());
+            System.out.println("Page size" + memory.getPageSize());
+        }
+        catch (Exception e){
+            System.out.println("Youre better than everyone ");
+        }
+
 
     }
     public void getVirtualMemoryInfo(){
