@@ -45,9 +45,25 @@ Main {
                     //System.out.println("-------------------------");
                     //break;
                 case 4:
-                    motherboardInfo.printOutBaseBoardInfo();
-                    System.out.println("-------------------------");
-                    break;
+                    System.out.println("Which motherboard information would you like to display? ");
+                    System.out.println("1. General Information");
+                    System.out.println("2. Firmware Information");
+                    int choice2 = sc.nextInt();
+                    System.out.println();
+                    switch (choice2) {
+                        case 1:
+                            motherboardInfo.printOutBaseBoardInfo();
+                            System.out.println("-------------------------");
+                            break;
+                        case 2:
+                            motherboardInfo.printOutFirmwareInfo();
+                            System.out.println("-------------------------");
+                            break;
+                        default:
+                            System.out.println("Please enter a valid number");
+                            System.out.println("-------------------------");
+                            break;
+                    }
                 case 5:
                     displayInfo.printOutDisplayInfo();
                     System.out.println("-------------------------");
@@ -69,7 +85,7 @@ Main {
                     //System.out.println("-------------------------");
                     //break;
                 case 10:
-                    System.out.println("Exiting Sysinfo");
+                    System.out.println("Exiting SysInfo");
                     System.out.println("-------------------------");
                     sc.close();
                     return;
