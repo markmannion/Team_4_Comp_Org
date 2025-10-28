@@ -19,12 +19,13 @@ public class BatteryInfo {
                int maxCapacity = source.getMaxCapacity(); //current maximum capacity of battery in
                int originalCapacity = source.getDesignCapacity();
                double temperature = source.getTemperature(); //current temperature of battery
+               PowerSource.CapacityUnits units = source.getCapacityUnits();
 
                System.out.println("Battery Name: " + name);
                System.out.println("Voltage: " + voltage + " volts");
-               System.out.println("Max Capacity: " + maxCapacity + " mAh");
-               System.out.println("Default Capacity: " + originalCapacity + " mAh");
-               System.out.println("Capacity lost through usage: "+calculateCapacityLost(maxCapacity, originalCapacity)+"%");
+               System.out.println("Max Capacity: " + maxCapacity + units.toString());
+               System.out.println("Default Capacity: " + originalCapacity + units.toString());
+               System.out.println("Capacity lost through usage: " + calculateCapacityLost(maxCapacity, originalCapacity) + "%");
                System.out.println("Current Battery Temperature: " + temperature + "°C");
                System.out.println(" ");
            }
