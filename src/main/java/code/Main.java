@@ -1,8 +1,7 @@
 package code;
 import java.io.IOException;
 import java.util.Scanner;
-import oshi.SystemInfo;
-import oshi.hardware.CentralProcessor;
+
 
 public class
 Main {
