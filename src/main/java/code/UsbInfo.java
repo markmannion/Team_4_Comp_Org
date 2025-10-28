@@ -27,7 +27,10 @@ public class UsbInfo {
     }
 
     /**
-            Recursively went through usb devices
+        Recursively went through usb devices
+        @param devices list of usb devices to be gone through
+        @param currDepth Current Depth  
+        @param prefixes list of prefixes to be put infront of usb device
          */
     public void printOutInfo(List<UsbDevice>devices, int currDepth,ArrayList<String> prefixes){
         int i =1;
