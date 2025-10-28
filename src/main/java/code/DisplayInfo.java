@@ -30,12 +30,14 @@ public class DisplayInfo {
 
             System.out.println("Screen Width: " + EdidUtil.getHcm(edidData));
             System.out.println("Screen Height: " + EdidUtil.getVcm(edidData));
+
             //Unless it's a monitor it won't print a valid resolution/refresh rate
             System.out.println("Preferred Resolution: " + EdidUtil.getTimingDescriptor(edidData));
             System.out.println("Manuafacturer ID: " + EdidUtil.getManufacturerID(edidData));
             System.out.println("Display ID: " + EdidUtil.getProductID(edidData));
             System.out.println("Serial Number: " + EdidUtil.getSerialNo(edidData));
             System.out.println("EDID Version: " + EdidUtil.getVersion(edidData));
+
             //not really needed as descriptorType 0xFC prints a valid display name
             System.out.println("Display Model: " + EdidUtil.getDescriptorText(edidData));
             System.out.println("Manuafacture Week: " + EdidUtil.getWeek(edidData)); //laptops don't have any week info
