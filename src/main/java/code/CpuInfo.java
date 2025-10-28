@@ -3,6 +3,7 @@ package code;
 
 import oshi.hardware.CentralProcessor;
 import oshi.hardware.HardwareAbstractionLayer;
+import oshi.hardware.Sensors;
 
 import java.lang.Thread;
 
@@ -13,12 +14,14 @@ public class CpuInfo {
     CentralProcessor cpu;
     CentralProcessor.ProcessorIdentifier cpuIdentifier;
     List<CentralProcessor.ProcessorCache> processorCacheList;
+    Sensors sensors;
 
 
     CpuInfo(HardwareAbstractionLayer hal) {
         cpu = hal.getProcessor();
         cpuIdentifier = cpu.getProcessorIdentifier();
         processorCacheList = cpu.getProcessorCaches();
+        sensors = hal.getSensors();
 
     }
 
@@ -63,5 +66,23 @@ public class CpuInfo {
     public void getCpuUtilPercent(){
 
         System.out.printf("CPU Usage: "+ cpuUtilPercent());
+    }
+
+    public double CpuTemp(){
+        return Math.round(sensors.getCpuTemperature());
+    }
+
+    public void getCpuTemp(){
+        System.out.println(CpuTemp());
+    }
+
+    public int[] fanSpeed(){
+        return sensors.getFanSpeeds();
+    }
+    public void getFanSpeed(){
+        int[] fanList = fanSpeed();
+        for(int fan:fanList){
+            System.out.println("Fan Speed: "+ fan +" Rpm");
+        }
     }
 }

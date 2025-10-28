@@ -7,9 +7,6 @@ Main {
     public static void main(String[] args) {
         SystemManager manager = new SystemManager();
         CpuInfo cpuInfo = new CpuInfo(manager.getHal());
-        cpuInfo.getCpuSummary();
-        cpuInfo.getCaches();
-
-        cpuInfo.getCpuUtilPercent();
+        cpuInfo.getCpuTemp();
     }
 }
