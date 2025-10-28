@@ -80,14 +80,14 @@ Main {
                             break;}
                     break;
                     }
-                case 5:
+                case 5:{
                     displayInfo.printOutDisplayInfo();
                     System.out.println("-------------------------");
-                    break;
-                case 6:
+                    break;}
+                case 6:{
                     usbInfo.printOutInfo();
                     System.out.println("-------------------------");
-                    break;
+                    break;}
                 case 7:
                     pciInfo.printOutInfo();
                     System.out.println("-------------------------");
