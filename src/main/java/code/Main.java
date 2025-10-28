@@ -77,13 +77,13 @@ Main {
                     //System.out.println("-------------------------");
                     //break;
                 case 8:
-                    //BatteryInfo Method
-                    //System.out.println("-------------------------");
-                    //break;
+                    new BatteryInfo().getBatteryInfo(manager.getHal());
+                    System.out.println("-------------------------");
+                    break;
                 case 9:
-                    //NetworkInfo method
-                    //System.out.println("-------------------------");
-                    //break;
+                    new NetworkInfo().getNetworkInfo(manager.getHal());
+                    System.out.println("-------------------------");
+                    break;
                 case 10:
                     System.out.println("Exiting SysInfo");
                     System.out.println("-------------------------");
