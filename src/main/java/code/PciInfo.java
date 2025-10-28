@@ -6,6 +6,35 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+class PciFunction{
+    String id;
+    String vendor;
+    String device;
+    String deviceID;
+    String vendorId;
+    String deviceId;
+
+}
+
+class PciDevice{
+    String id;
+    ArrayList<PciFunction> functions;
+
+}
+
+
+class PciBus{
+    String id;
+    ArrayList<PciDevice> buses;
+
+}
+
+class PciDomain{
+    String id;
+    ArrayList<PciBus> buses;
+
+}
+
 
 public class PciInfo {
 
