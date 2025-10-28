@@ -17,6 +17,7 @@ Main {
         BaseBoardInfo motherboardInfo = new BaseBoardInfo(manager.getHal());
         UsbInfo usbInfo = new UsbInfo(manager.getHal());
         PciInfo pciInfo = new PciInfo();
+        DiskInfo diskInfo = new DiskInfo(manager.getHal());
 
 
         while(true){
@@ -104,6 +105,11 @@ Main {
                     System.out.println("Exiting SysInfo");
                     System.out.println("-------------------------");
                     sc.close();
+                    return;
+                case 11:
+                    System.out.println("Disk Info");
+                    diskInfo.printOutDiskInfo();
+                    System.out.println("-----------");
                     return;
                 default:
                     System.out.println("Please choose a valid option");
