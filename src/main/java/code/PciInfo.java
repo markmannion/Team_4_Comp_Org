@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 
 public class PciInfo {
 
-    public static void getInfo() throws IOException {
+    public void printOutInfo() throws IOException {
         ProcessBuilder pb = new ProcessBuilder("lspci");
         Process process = pb.start();
 

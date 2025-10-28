@@ -1,11 +1,12 @@
 package code;
+import java.io.IOException;
 import java.util.Scanner;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 
 public class
 Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
         Scanner sc = new Scanner(System.in); //declaring scanner
         SystemManager manager = new SystemManager(); //system info
 
@@ -14,6 +15,9 @@ Main {
         GraphicsCardInfo gpuInfo = new GraphicsCardInfo(manager.getHal());
         DisplayInfo displayInfo = new DisplayInfo(manager.getHal());
         BaseBoardInfo motherboardInfo = new BaseBoardInfo(manager.getHal());
+        UsbInfo usbInfo = new UsbInfo(manager.getHal());
+        PciInfo pciInfo = new PciInfo();
+
 
         while(true){
             System.out.println("Welcome to SysInfo : Team 4");
@@ -69,13 +73,13 @@ Main {
                     System.out.println("-------------------------");
                     break;
                 case 6:
-                    //USBInfo method
-                    //System.out.println("-------------------------");
-                    //break;
+                    usbInfo.printOutInfo();
+                    System.out.println("-------------------------");
+                    break;
                 case 7:
-                    //PCIEInfo method
-                    //System.out.println("-------------------------");
-                    //break;
+                    pciInfo.printOutInfo();
+                    System.out.println("-------------------------");
+                    break;
                 case 8:
                     new BatteryInfo().getBatteryInfo(manager.getHal());
                     System.out.println("-------------------------");
