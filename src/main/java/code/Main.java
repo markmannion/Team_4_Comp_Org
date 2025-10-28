@@ -1,8 +1,7 @@
 package code;
 import java.io.IOException;
 import java.util.Scanner;
-import oshi.SystemInfo;
-import oshi.hardware.CentralProcessor;
+
 
 public class
 Main {
@@ -12,6 +11,7 @@ Main {
 
         //declaring objects
         CpuInfo cpuInfo = new CpuInfo(manager.getHal());
+
         GraphicsCardInfo gpuInfo = new GraphicsCardInfo(manager.getHal());
         DisplayInfo displayInfo = new DisplayInfo(manager.getHal());
         BaseBoardInfo motherboardInfo = new BaseBoardInfo(manager.getHal());
@@ -36,19 +36,30 @@ Main {
 
             int choice = sc.nextInt();
             switch (choice) {
-                case 1:
-                    //cpuInfo method
-                    //System.out.println("-------------------------");
-                    //break;
-                case 2:
+                case 1:{
+                    System.out.println("Which cpu information would you like to display? ");
+                    System.out.println("1. General Information");
+                    System.out.println("2. Cache Information");
+                    int choice2 = sc.nextInt();
+                    switch (choice2){
+                        case 1:
+                            cpuInfo.getCpuSummary();
+                        break;
+                        case 2:
+                            cpuInfo.getCaches();
+                            break;
+                    }
+
+                    break;}
+                case 2:{
                     gpuInfo.printOutGpuInfo();
                     System.out.println("-------------------------");
-                    break;
+                    break;}
                 case 3:
                     //OSInfo method
                     //System.out.println("-------------------------");
                     //break;
-                case 4:
+                case 4:{
                     System.out.println("Which motherboard information would you like to display? ");
                     System.out.println("1. General Information");
                     System.out.println("2. Firmware Information");
@@ -66,7 +77,7 @@ Main {
                         default:
                             System.out.println("Please enter a valid number");
                             System.out.println("-------------------------");
-                            break;
+                            break;}
                     }
                 case 5:
                     displayInfo.printOutDisplayInfo();
