@@ -11,24 +11,24 @@ import oshi.hardware.HardwareAbstractionLayer;
 import oshi.hardware.UsbDevice;
 
 public class UsbInfo {
-    private List<UsbDevice> devices;
+    private final HardwareAbstractionLayer hardware;
+
 
     public static void main(String[] args) {
         SystemInfo si = new SystemInfo();
         HardwareAbstractionLayer hal = si.getHardware();
         UsbInfo usb = new UsbInfo(hal);
         usb.getInfo();
-
-
     }
 
-    UsbInfo(HardwareAbstractionLayer hal) {
-        devices = hal.getUsbDevices(true);
+    UsbInfo(HardwareAbstractionLayer hardware) {
+        this.hardware = hardware;
     }
 
     
     public void getInfo(){
-        getInfo(this.devices,0);
+        List<UsbDevice> devices = this.hardware.getUsbDevices(true);
+        getInfo(devices,0);
     }
 
     public void getInfo(List<UsbDevice>devices, int currDepth){
