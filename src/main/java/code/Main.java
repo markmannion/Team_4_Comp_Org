@@ -110,35 +110,6 @@ Main {
                         }
 
                         break;
-                    break;}
-                case 2:{
-                    gpuInfo.printOutGpuInfo();
-                    System.out.println("-------------------------");
-                    break;}
-                case 3:
-                    //OSInfo method
-                    //System.out.println("-------------------------");
-                    //break;
-                case 4:{
-                    System.out.println("Which motherboard information would you like to display? ");
-                    System.out.println("1. General Information");
-                    System.out.println("2. Firmware Information");
-                    int choice2 = sc.nextInt();
-                    System.out.println();
-                    switch (choice2) {
-                        case 1:
-                            motherboardInfo.printOutBaseBoardInfo();
-                            System.out.println("-------------------------");
-                            break;
-                        case 2:
-                            motherboardInfo.printOutFirmwareInfo();
-                            System.out.println("-------------------------");
-                            break;
-                        default:
-                            System.out.println("Please enter a valid number");
-                            System.out.println("-------------------------");
-                            break;}
-                    break;
                     }
                     case 5:
                         displayInfo.printOutDisplayInfo();
@@ -170,40 +141,9 @@ Main {
                 }
 
                 System.out.println("Press 1 to return to menu");
-                menu= sc.nextInt();
-                if(menu ==1) break;
-                case 5:{
-                    displayInfo.printOutDisplayInfo();
-                    System.out.println("-------------------------");
-                    break;}
-                case 6:{
-                    usbInfo.printOutInfo();
-                    System.out.println("-------------------------");
-                    break;}
-                case 7:
-                    pciInfo.printOutInfo();
-                    System.out.println("-------------------------");
-                    break;
-                case 8:
-                    new BatteryInfo().getBatteryInfo(manager.getHal());
-                    System.out.println("-------------------------");
-                    break;
-                case 9:
-                    new NetworkInfo().getNetworkInfo(manager.getHal());
-                    System.out.println("-------------------------");
-                    break;
-                case 10:
-                    System.out.println("Exiting SysInfo");
-                    System.out.println("-------------------------");
-                    sc.close();
-                    return;
-                case 11:
-                    System.out.println("Disk Info");
-                    diskInfo.printOutDiskInfo();
-                    System.out.println("-----------");
-                    return;
-                default:
-                    System.out.println("Please choose a valid option");
+                menu = sc.nextInt();
+                if (menu == 1) break;
+
             }
         }
     }
