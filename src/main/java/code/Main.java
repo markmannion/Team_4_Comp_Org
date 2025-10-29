@@ -27,21 +27,23 @@ Main {
         while (true) {
             System.out.println("Welcome to SysInfo : Team 4");
             System.out.println("Choose which information to display: ");
-            System.out.println("1. CPU Information");
-            System.out.println("2. GPU Information");
-            System.out.println("3. Memory Information");
-            System.out.println("4. Motherboard Information");
-            System.out.println("5. Display Information");
-            System.out.println("6. USB Information");
-            System.out.println("7. PCIE Information");
-            System.out.println("8. Battery Information");
-            System.out.println("9. Network Information");
-            System.out.println("10. Exit SysInfo");
+            System.out.println("1.  CPU Information");
+            System.out.println("2.  GPU Information");
+            System.out.println("3.  Memory Information");
+            System.out.println("4.  Motherboard Information");
+            System.out.println("5.  Display Information");
+            System.out.println("6.  USB Information");
+            System.out.println("7.  PCIE Information");
+            System.out.println("8.  Battery Information");
+            System.out.println("9.  Network Information");
+            System.out.println("10. Live monitor");
+            System.out.println("11. Exit SysInfo");
             System.out.print("---> ");
 
             int choice = 0;
             try {
                 choice = sc.nextInt();
+                sc.nextLine();
             }
             catch (InputMismatchException e) {
                 System.out.println("Invalid entry");
@@ -56,6 +58,7 @@ Main {
                         System.out.println("1. General Information");
                         System.out.println("2. Cache Information");
                         int choice2 = sc.nextInt();
+                        sc.nextLine();
                         switch (choice2) {
                             case 1:
                                 cpuInfo.getCpuSummary();
@@ -63,7 +66,7 @@ Main {
 
                                 break;
                             case 2:
-                                liveGraph.start();
+                                cpuInfo.getCaches();
                                 System.out.println("-------------------------");
 
                                 break;
@@ -81,6 +84,7 @@ Main {
                         System.out.println("1. Physical Ram ");
                         System.out.println("2. Virtual Ram");
                         int choice2 = sc.nextInt();
+                        sc.nextLine();
                         System.out.println();
                         switch (choice2) {
                             case 1:
@@ -103,6 +107,8 @@ Main {
                         System.out.println("1. General Information");
                         System.out.println("2. Firmware Information");
                         int choice2 = sc.nextInt();
+                        sc.nextLine();
+
                         System.out.println();
                         switch (choice2) {
                             case 1:
@@ -142,6 +148,10 @@ Main {
                         System.out.println("-------------------------");
                         break;
                     case 10:
+                        liveGraph.graph();
+                        System.out.println("-------------------------");
+                        break;
+                    case 11:
                         System.out.println("Exiting SysInfo");
                         System.out.println("-------------------------");
                         sc.close();
@@ -152,6 +162,7 @@ Main {
 
                 System.out.println("Press 1 to return to menu");
                 menu = sc.nextInt();
+                sc.nextLine();
                 if (menu == 1) break;
 
             }

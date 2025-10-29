@@ -2,41 +2,55 @@ package code;
 
 import java.util.Scanner;
 
-public class LiveGraph extends Thread {
+public class LiveGraph {
 
     int cpuUtil;
-    int cpuTemp;
-    int cpuVoltage;
     int memoryUtil;
     Scanner input;
     CpuInfo cpuInfo;
     MemoryInfo memoryInfo;
+    Thread monitor;
 
-
-    public LiveGraph(MemoryInfo memoryInfo,CpuInfo cpuInfo){
+    public LiveGraph(MemoryInfo memoryInfo, CpuInfo cpuInfo) {
         this.memoryInfo = memoryInfo;
         this.cpuInfo = cpuInfo;
         input = new Scanner(System.in);
     }
-    @Override
-    public  void run() {
 
+    public void graph() {
 
-        while (true) {
+        monitor = new Thread(() -> {
+            while (!Thread.currentThread().isInterrupted()) {
+                cpuUtil = cpuInfo.cpuUtilPercent();
+                memoryUtil = memoryInfo.memoryUtilPercent();
 
-            cpuUtil = cpuInfo.cpuUtilPercent();
-            memoryUtil = memoryInfo.memoryUtilPercent();
-            System.out.println("Cpu util% : "+ graphLogic(cpuUtil));
-            System.out.println("Memory Util% " + graphLogic(memoryUtil));
-//            String x = input.nextLine();
-//            if (x.isEmpty()) {
-//                System.out.println("Exiting loop");
-//                break;
-//            }
+                System.out.print("\u001B[2J");
+                System.out.print("\u001B[H");
+                System.out.flush();
 
+                System.out.println("Cpu util%:    " + graphLogic(cpuUtil) + " " + cpuUtil + "%");
+                System.out.println("Memory util%: " + graphLogic(memoryUtil) + " " + memoryUtil + "%");
+                System.out.println("\nPress Enter to quit...");
 
-        }
+                try {
+                    Thread.sleep(1000); // Update every second
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        });
+
+        monitor.start();
+
+        // Wait for user input to exit
+        input.nextLine();
+
+        // Stop monitoring thread
+        monitor.interrupt();
+        System.out.println("\nExiting loop...");
+
     }
+
     public String graphLogic(int x){
          x = Math.round(x / 5.0f);
         return "[" +
