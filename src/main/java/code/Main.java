@@ -1,6 +1,7 @@
 package code;
 
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -38,7 +39,15 @@ Main {
             System.out.println("10. Exit SysInfo");
             System.out.print("---> ");
 
-            int choice = sc.nextInt();
+            int choice = 0;
+            try {
+                choice = sc.nextInt();
+            }
+            catch (InputMismatchException e) {
+                System.out.println("Invalid entry");
+                sc.nextLine();
+            }
+
             int menu = 0;
             while (true) {
                 switch (choice) {
