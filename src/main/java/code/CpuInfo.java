@@ -26,9 +26,17 @@ public class CpuInfo {
     }
 
 
-    public long getCpuFrequency(int core) {
-        long[] coreList = cpu.getCurrentFreq();
-        return coreList[core] / 1000000;
+    public int getCpuFrequency() {
+        long[] coreFrequency = cpu.getCurrentFreq();
+        long sum = 0;
+        for (long f : coreFrequency) sum += f;
+        return Math.abs((int)(sum / coreFrequency.length));
+    }
+
+    public int getCpuFrequencyPercent() {
+        long maxFreq = cpu.getMaxFreq();
+        double percent = (double) getCpuFrequency() / maxFreq * 100;
+        return (int) Math.round(percent);
     }
 
     public void getCpuSummary() {
@@ -68,21 +76,21 @@ public class CpuInfo {
         System.out.printf("CPU Usage: "+ cpuUtilPercent());
     }
 
-    public double CpuTemp(){
-        return Math.round(sensors.getCpuTemperature());
+    public int CpuTemp(){
+        return (int) Math.round(sensors.getCpuTemperature());
     }
 
     public void getCpuTemp(){
         System.out.println(CpuTemp());
     }
 
-    public int[] fanSpeed(){
-        return sensors.getFanSpeeds();
-    }
-    public void getFanSpeed(){
-        int[] fanList = fanSpeed();
-        for(int fan:fanList){
-            System.out.println("Fan Speed: "+ fan +" Rpm");
+    public String getFanSpeed(){
+        StringBuilder s = new StringBuilder();
+        for(int fan:sensors.getFanSpeeds()){
+            s.append(fan);
+            s.append(",");
         }
+        return s.toString();
     }
+
 }

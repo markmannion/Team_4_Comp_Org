@@ -6,6 +6,8 @@ public class LiveGraph {
 
     int cpuUtil;
     int memoryUtil;
+    int cpuTemp;
+    int cpuFrequency;
     Scanner input;
     CpuInfo cpuInfo;
     MemoryInfo memoryInfo;
@@ -23,13 +25,18 @@ public class LiveGraph {
             while (!Thread.currentThread().isInterrupted()) {
                 cpuUtil = cpuInfo.cpuUtilPercent();
                 memoryUtil = memoryInfo.memoryUtilPercent();
-
+                cpuTemp = cpuInfo.CpuTemp();
+                cpuFrequency = cpuInfo.getCpuFrequencyPercent();
                 System.out.print("\u001B[2J");
                 System.out.print("\u001B[H");
                 System.out.flush();
 
-                System.out.println("Cpu util%:    " + graphLogic(cpuUtil) + " " + cpuUtil + "%");
-                System.out.println("Memory util%: " + graphLogic(memoryUtil) + " " + memoryUtil + "%");
+                System.out.println("Cpu util:    " + graphLogic(cpuUtil) + " " + cpuUtil + "%");
+                System.out.println("Memory util: " + graphLogic(memoryUtil) + " " + memoryUtil + "%");
+                System.out.println("Cpu temp:    " + graphLogic(cpuTemp) + " " + cpuTemp + "c");
+                System.out.println("Cpu frequency" + graphLogic(cpuFrequency)+ " " + cpuInfo.getCpuFrequency()/1000000 + "Mhz");
+                System.out.println("Fan rpm:     "+  cpuInfo.getFanSpeed());
+                System.out.println();
                 System.out.println("\nPress Enter to quit...");
 
                 try {
