@@ -20,6 +20,7 @@ Main {
         UsbInfo usbInfo = new UsbInfo(manager.getHal());
         PciInfo pciInfo = new PciInfo();
         DiskInfo diskInfo = new DiskInfo(manager.getHal());
+        LiveGraph liveGraph = new LiveGraph(memoryInfo,cpuInfo);
 
 
         while (true) {
@@ -53,7 +54,7 @@ Main {
 
                                 break;
                             case 2:
-                                cpuInfo.getCaches();
+                                liveGraph.start();
                                 System.out.println("-------------------------");
 
                                 break;

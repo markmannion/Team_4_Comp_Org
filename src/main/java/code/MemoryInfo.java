@@ -15,7 +15,7 @@ public class MemoryInfo {
 
 
     MemoryInfo(HardwareAbstractionLayer hal) {
-        GlobalMemory memory = hal.getMemory();
+        memory = hal.getMemory();
         physicalMemoryList = memory.getPhysicalMemory();
         virtualMemory = memory.getVirtualMemory();
 
@@ -39,7 +39,7 @@ public class MemoryInfo {
             System.out.println("Part Number: " + physicalMemoryList.get(0).getPartNumber());
             System.out.println("Page size" + memory.getPageSize());
         } catch (Exception e) {
-            System.out.println("Youre better than everyone ");
+            System.out.println(getTotalMemoryGB());
         }
 
 
@@ -48,8 +48,20 @@ public class MemoryInfo {
     public void getVirtualMemoryInfo() {
         System.out.println("Max Virtual Memory: " + virtualMemory.getVirtualMax());
         System.out.println("Virtual Memory Inuse: " + virtualMemory.getVirtualInUse());
-
     }
+
+    public int memoryUtilPercent() {
+        long total = memory.getTotal();
+        long used = total - memory.getAvailable();
+
+        if (total == 0) {
+            return 0; // avoid division by zero
+        }
+
+        double percent = (double) used / total * 100;
+        return (int) Math.round(percent);
+    }
+
 
 
 }
