@@ -1,5 +1,5 @@
 package code;
-
+//jude
 import java.util.Scanner;
 
 public class LiveGraph {

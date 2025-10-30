@@ -3,7 +3,7 @@ package code;
 
 import oshi.software.os.OperatingSystem;
 
-import java.util.List;
+//jude
 
 public class OsInfo {
 

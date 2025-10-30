@@ -64,6 +64,7 @@ Main {
                         System.out.println("2. Cache Information");
                         int choice2 = sc.nextInt();
                         sc.nextLine();
+                        System.out.println("-------------------------");
                         switch (choice2) {
                             case 1:
                                 cpuInfo.getCpuSummary();

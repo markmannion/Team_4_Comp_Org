@@ -10,7 +10,7 @@ import java.util.NoSuchElementException;
 import oshi.SystemInfo;
 import oshi.hardware.HardwareAbstractionLayer;
 import oshi.hardware.UsbDevice;
-
+//vadim
 public class UsbInfo {
     private final HardwareAbstractionLayer hardware;
 

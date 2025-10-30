@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-
+//vadim
 public class PciInfo {
 
     // public void read(){
