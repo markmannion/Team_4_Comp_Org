@@ -35,11 +35,11 @@ public class MemoryInfo {
         try {
             System.out.println("Manufacturer: " + physicalMemoryList.get(0).getManufacturer());
             System.out.println("Capacity: " + getTotalMemoryGB() + "Gb");
-            System.out.println("Clock Speed: " + physicalMemoryList.get(0).getClockSpeed() / 1000000 +"Mhz");
+            System.out.println("Clock Speed: " + physicalMemoryList.get(0).getClockSpeed() / 1000000 +" Mhz");
             System.out.println("Part Number: " + physicalMemoryList.get(0).getPartNumber());
-            System.out.println("Page size: " + memory.getPageSize());
+            System.out.println("Page size: " + memory.getPageSize() + " Bytes");
         } catch (Exception e) {
-            System.out.println("Capacity: "+getTotalMemoryGB()+"GB");
+            System.out.println("Capacity: "+getTotalMemoryGB()+" GB");
             System.out.println("Linux some info is restricted");
         }
 
