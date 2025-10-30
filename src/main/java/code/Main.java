@@ -22,9 +22,13 @@ Main {
         PciInfo pciInfo = new PciInfo();
         DiskInfo diskInfo = new DiskInfo(manager.getHal());
         LiveGraph liveGraph = new LiveGraph(memoryInfo,cpuInfo);
+        OsInfo osInfo = new OsInfo(manager.getOs());
 
 
         while (true) {
+            System.out.print("\u001B[2J");
+            System.out.print("\u001B[H");
+            System.out.flush();
             System.out.println("Welcome to SysInfo : Team 4");
             System.out.println("Choose which information to display: ");
             System.out.println("1.  CPU Information");
@@ -36,8 +40,9 @@ Main {
             System.out.println("7.  PCIE Information");
             System.out.println("8.  Battery Information");
             System.out.println("9.  Network Information");
-            System.out.println("10. Live monitor");
-            System.out.println("11. Exit SysInfo");
+            System.out.println("10. OS Information");
+            System.out.println("11. Live monitor");
+            System.out.println("12. Exit SysInfo");
             System.out.print("---> ");
 
             int choice = 0;
@@ -148,10 +153,14 @@ Main {
                         System.out.println("-------------------------");
                         break;
                     case 10:
-                        liveGraph.graph();
+                        osInfo.getOsInfo();
                         System.out.println("-------------------------");
                         break;
                     case 11:
+                        liveGraph.graph();
+                        System.out.println("-------------------------");
+                        break;
+                    case 12:
                         System.out.println("Exiting SysInfo");
                         System.out.println("-------------------------");
                         sc.close();
